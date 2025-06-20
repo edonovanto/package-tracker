@@ -58,7 +58,7 @@ export default function PackageTracker() {
           required
         />
         <button className="tracker-button" type="submit" disabled={loading}>
-          {loading ? "Searching..." : "Track"}
+          {loading ? "..." : "Track"}
         </button>
       </form>
       {error && <div className="tracker-error">{error}</div>}
@@ -73,8 +73,12 @@ export default function PackageTracker() {
             <span>{result["Sender Name"]}</span>
           </div>
           <div className="tracker-row">
-            <span>Recipient:</span>
-            <span><strong>{result["Recipient Name"]}</strong></span>
+            <span>Recipient - Division:</span>
+            <span>
+              <strong>
+                {result["Recipient Name"]} - {`[`}{result["Division"]}{`]`}
+              </strong>
+            </span>
           </div>
           <div className="tracker-row separator">
             <span>Details:</span>
@@ -84,9 +88,21 @@ export default function PackageTracker() {
             <span>Receiving Date:</span>
             <span>{result["Receiving Date/Time"]}</span>
           </div>
+          <div className="tracker-row">
+            <span>Shipping Date:</span>
+            <span>
+              {result["Receiving Date/Time"]
+                ? result["Receiving Date/Time"]
+                : "-"}
+            </span>
+          </div>
           <div className="tracker-row separator">
             <span>Delivery Date:</span>
-            <span>{result["Delivery Date/Time"]}</span>
+            <span>
+              {result["Delivery Date/Time"]
+                ? result["Delivery Date/Time"]
+                : "-"}
+            </span>
           </div>
 
           <div className="tracker-row">
@@ -101,24 +117,30 @@ export default function PackageTracker() {
             <span>{result["Customer Phone"]}</span>
           </div>
           <div className="tracker-photos">
-            <a
-              className="photo-button"
-              href={result["Receiving Photo"]}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MdImage className="photo-icon" />
-              View Receiving Photo
-            </a>
-            <a
-              className="photo-button"
-              href={result["Delivery Photo"]}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MdImage className="photo-icon" />
-              View Delivery Photo
-            </a>
+            {result["Receiving Photo"] &&
+              result["Receiving Photo"].trim() !== "" && (
+                <a
+                  className="photo-button"
+                  href={result["Receiving Photo"]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MdImage className="photo-icon" />
+                  View Receiving Photo
+                </a>
+              )}
+            {result["Delivery Photo"] &&
+              result["Delivery Photo"].trim() !== "" && (
+                <a
+                  className="photo-button"
+                  href={result["Delivery Photo"]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MdImage className="photo-icon" />
+                  View Delivery Photo
+                </a>
+              )}
           </div>
         </div>
       )}
