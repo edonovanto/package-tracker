@@ -91,8 +91,8 @@ export default function PackageTracker() {
           <div className="tracker-row">
             <span>Shipping Date:</span>
             <span>
-              {result["Receiving Date/Time"]
-                ? result["Receiving Date/Time"]
+              {result["Shipping Receiving Date/Time"]
+                ? result["Shipping Date/Time"]
                 : "-"}
             </span>
           </div>
