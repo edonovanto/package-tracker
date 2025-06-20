@@ -1,5 +1,6 @@
 "use client";
 import React, { use, useState } from "react";
+import { MdImage } from "react-icons/md";
 
 export default function PackageTracker() {
   const [resiNo, setResiNo] = useState("");
@@ -46,7 +47,7 @@ export default function PackageTracker() {
       <div className="tracker-header">
         <img src="/images/logo.png" alt="Logo" className="tracker-logo" />
       </div>
-      <h1 className="tracker-title">Package Tracker</h1>
+      <h1 className="tracker-title">UT Package Tracker</h1>
       <form className="tracker-form" onSubmit={handleSubmit}>
         <input
           className="tracker-input"
@@ -73,7 +74,7 @@ export default function PackageTracker() {
           </div>
           <div className="tracker-row">
             <span>Recipient:</span>
-            <span>{result["Recipient Name"]}</span>
+            <span><strong>{result["Recipient Name"]}</strong></span>
           </div>
           <div className="tracker-row separator">
             <span>Details:</span>
@@ -101,24 +102,29 @@ export default function PackageTracker() {
           </div>
           <div className="tracker-photos">
             <a
-              href={result["Delivery Photo"]}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="tracker-photo-link"
-            >
-              View Delivery Photo
-            </a>
-            <a
+              className="photo-button"
               href={result["Receiving Photo"]}
               target="_blank"
               rel="noopener noreferrer"
-              className="tracker-photo-link"
             >
+              <MdImage className="photo-icon" />
               View Receiving Photo
+            </a>
+            <a
+              className="photo-button"
+              href={result["Delivery Photo"]}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MdImage className="photo-icon" />
+              View Delivery Photo
             </a>
           </div>
         </div>
       )}
+      <footer className="footer-copyright">
+        © {new Date().getFullYear()} UT Package Tracker v1.1
+      </footer>
     </div>
   );
 }
