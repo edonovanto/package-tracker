@@ -91,7 +91,7 @@ export default function PackageTracker() {
           <div className="tracker-row">
             <span>Shipping Date:</span>
             <span>
-              {result["Shipping Receiving Date/Time"]
+              {result["Shipping Date/Time"]
                 ? result["Shipping Date/Time"]
                 : "-"}
             </span>
@@ -145,7 +145,7 @@ export default function PackageTracker() {
         </div>
       )}
       <footer className="footer-copyright">
-        © {new Date().getFullYear()} UT Package Tracker v1.1
+        © {new Date().getFullYear()} UT Package Tracker v1.2
       </footer>
     </div>
   );
