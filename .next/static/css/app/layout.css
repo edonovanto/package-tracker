@@ -98,6 +98,7 @@ body {
 .tracker-form {
   display: flex;
   gap: 8px;
+  margin-bottom: 18px;
 }
 
 .tracker-input {
